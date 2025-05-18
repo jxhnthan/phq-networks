@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PHQ-4 - Question 1</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .pointer {
+      transition: transform 0.3s ease;
+      transform-origin: bottom center;
+    }
+    .highlighted {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body class="bg-[#fef8f4] h-screen flex flex-col items-center justify-between py-10 px-6 text-center font-sans">
+
+  <div class="w-full max-w-sm">
+    <div class="text-sm text-gray-500 mb-4">1 of 4</div>
+    <h1 class="text-2xl font-bold text-gray-800 mb-2">Over the last 2 weeks...</h1>
+    <p class="text-lg font-medium text-gray-700 mb-4">How often have you been bothered by:</p>
+    <p class="text-base text-gray-600 mb-6 font-semibold">Feeling nervous, anxious or on edge</p>
+
+    <div class="relative mb-6">
+      <div id="emoji" class="text-6xl mb-4">😐</div>
+    </div>
+
+    <!-- Mood selector buttons -->
+    <div class="relative h-40 flex justify-center items-end">
+      <div class="flex justify-between w-full max-w-md">
+        <button onclick="updateMood(0)" id="mood-0" class="flex flex-col items-center space-y-1 transition duration-300 ease-in-out">
+          <div class="w-14 h-14 rounded-full bg-gray-200 flex items-center justify-center text-2xl">😐</div>
+          <span class="text-sm text-gray-600">Not at all</span>
+        </button>
+        <button onclick="updateMood(1)" id="mood-1" class="flex flex-col items-center space-y-1 transition duration-300 ease-in-out">
+          <div class="w-14 h-14 rounded-full bg-yellow-200 flex items-center justify-center text-2xl">😕</div>
+          <span class="text-sm text-gray-600">Several days</span>
+        </button>
+        <button onclick="updateMood(2)" id="mood-2" class="flex flex-col items-center space-y-1 transition duration-300 ease-in-out">
+          <div class="w-14 h-14 rounded-full bg-blue-200 flex items-center justify-center text-2xl">😟</div>
+          <span class="text-sm text-gray-600">More than half</span>
+        </button>
+        <button onclick="updateMood(3)" id="mood-3" class="flex flex-col items-center space-y-1 transition duration-300 ease-in-out">
+          <div class="w-14 h-14 rounded-full bg-red-200 flex items-center justify-center text-2xl">😢</div>
+          <span class="text-sm text-gray-600">Nearly every day</span>
+        </button>
+      </div>
+    </div>
+
+    <button onclick="goNext()" class="mt-8 w-full bg-black text-white py-3 rounded-full text-lg font-semibold">Next</button>
+  </div>
+
+  <script>
+    const moods = [
+      { emoji: '😐', label: 'Not at all', score: 0 },
+      { emoji: '😕', label: 'Several days', score: 1 },
+      { emoji: '😟', label: 'More than half', score: 2 },
+      { emoji: '😢', label: 'Nearly every day', score: 3 }
+    ];
+
+    let selected = 0;
+
+    function updateMood(index) {
+      selected = index;
+      document.getElementById('emoji').textContent = moods[index].emoji;
+
+      const buttons = document.querySelectorAll('.flex button');
+      buttons.forEach(button => button.classList.remove('highlighted'));
+      document.getElementById(`mood-${index}`).classList.add('highlighted');
+    }
+
+    function goNext() {
+      localStorage.setItem('phq1_score', selected);
+      window.location.href = "phq2.html";
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

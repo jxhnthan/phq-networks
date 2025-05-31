@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PHQ-9 - Question 3</title>
+  <title>PHQ-9 - Question 9</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     .pointer {
@@ -18,16 +18,15 @@
 <body class="bg-[#fef8f4] h-screen flex flex-col items-center justify-between py-10 px-6 text-center font-sans">
 
   <div class="w-full max-w-sm">
-    <div class="text-sm text-gray-500 mb-4">3 of 9</div>
+    <div class="text-sm text-gray-500 mb-4">9 of 9</div>
     <h1 class="text-2xl font-bold text-gray-800 mb-2">Over the last 2 weeks...</h1>
     <p class="text-lg font-medium text-gray-700 mb-4">How often have you been bothered by:</p>
-    <p class="text-base text-gray-600 mb-6 font-semibold">Little interest or pleasure in doing things</p>
+    <p class="text-base text-gray-600 mb-6 font-semibold">Thoughts that you would be better off dead or of hurting yourself in some way</p>
 
     <div class="relative mb-6">
       <div id="emoji" class="text-6xl mb-4">😐</div>
     </div>
 
-    <!-- Mood selector buttons -->
     <div class="relative h-40 flex justify-center items-end">
       <div class="flex justify-between w-full max-w-md space-x-6">
         <button onclick="updateMood(0)" id="mood-0" class="flex flex-col items-center space-y-1 mb-4 transition duration-300 ease-in-out">
@@ -49,7 +48,7 @@
       </div>
     </div>
 
-    <button onclick="goNext()" class="mt-8 w-full bg-black text-white py-3 rounded-full text-lg font-semibold">Next</button>
+    <button onclick="goNext()" class="mt-8 w-full bg-black text-white py-3 rounded-full text-lg font-semibold">See Results</button>
   </div>
 
   <script>
@@ -72,12 +71,9 @@
     }
 
     function goNext() {
-      localStorage.setItem('phq3_score', selected);
-      window.location.href = "phq4.html";
+      localStorage.setItem('phq9_score', selected);
+      window.location.href = "results.html"; // Final results page
     }
   </script>
 </body>
 </html>
-
-
-
